@@ -8,11 +8,21 @@ svg_canvas.clear = function(){
 svg_canvas.render = function(){
     var html_st
     this.svg_objects.forEach(function(object,index){
-        html_st = '<'+object.type+' id="svg_'+index+'" '
+        html_st = svg_get_html(object)
     })
      console.log(html_st);
+    $('svg').html(html_st)
 
 
+}
+
+svg_get_html = function(object){
+    var html_st
+    html_st = '<'+object.type+' id="svg_'+object.id+'"';
+    html_st += ' x1="'+object.x1+'" y1="'+object.y1+'"';
+    html_st += ' x2="'+object.x2+'" y2="'+object.y2+'"';
+    html_st += ' stroke-width="1" stroke="#000" />'
+    return html_st
 }
 
 $(document).ready(function(){
